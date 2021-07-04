@@ -12,6 +12,7 @@ public class SpawnEnemies : MonoBehaviour
     Image emptySprite;
     public Sprite[] enemySprite;
     public EnemyStats[] enemyStats;
+    public int enemyID;
 
 
     // Start is called before the first frame update
@@ -25,8 +26,10 @@ public class SpawnEnemies : MonoBehaviour
         
         enemyHP = enemyStats[index].initialValue;
         enemyHpDisplay.GetComponent<Text>().text = enemyHP.ToString();
-        
-       
+        enemyID = index;
+
+
+
 
 
 

@@ -7,25 +7,30 @@ using TMPro;
 public class CombatUI : MonoBehaviour
 {
     public GameObject navigation;
+    public GameObject enemyAI;
+
+    //public GameObject cardSlot1;
+    //public GameObject cardSlot2;
 
     public GameObject playerHpDisplay;
-    public GameObject cardSlot1;
-    public GameObject cardSlot2;
-    public int playerHP;
-    int playerMaxHP = 100;
-
+    int playerHP;
     public GameObject enemyHpDisplay;
     int enemyHP;
 
+    public int playerTurn;
+
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
+        InitialHP();
+        playerTurn = 0;
 
-        playerHP = playerMaxHP;
+    }
 
-       
-
-
+    public void InitialHP()
+    {
+        playerHP = 100;
+        playerHpDisplay.GetComponent<Text>().text = playerHP.ToString();
 
     }
 
@@ -35,37 +40,44 @@ public class CombatUI : MonoBehaviour
         
     }
 
-
-    //Attack function
+    //Player atk list
     public void InitiatePlayerCard()
     {
-
-        enemyHP = int.Parse(enemyHpDisplay.GetComponent<Text>().text);
-
-
-        enemyHP -= 10;
-
-        if (enemyHP > 0)
+        GetCurrentEnemyHP();
+        if (playerTurn == 0)
         {
-            DisplayEnemyHP();
-            Debug.Log("enemy take 10 dmg oof");
+            enemyHP -= 10;
 
+            if (enemyHP > 0)
+            {
+                ResolvePlayerAtk();
+            }
+
+            if (enemyHP <= 0)
+            {
+                EnemyDefeat();
+            }
         }
-        
-
-        if (enemyHP <= 0)
-        {
-            enemyHpDisplay.GetComponent<Text>().text = 0.ToString();
-            navigation.GetComponent<Navigation>().Victory();
-            Debug.Log("enemy has been defeated");
-        }
-
-        
+ 
     }
 
-    public void DisplayEnemyHP()
+    public void ResolvePlayerAtk()
     {
         enemyHpDisplay.GetComponent<Text>().text = enemyHP.ToString();
+        playerTurn = 1;
+        enemyAI.GetComponent<EnemyAI>().EnemyAttack();
+    }
+
+    public void EnemyDefeat()
+    {
+        enemyHpDisplay.GetComponent<Text>().text = 0.ToString();
+        navigation.GetComponent<Navigation>().Victory();
+    }
+
+    public void GetCurrentEnemyHP()
+    {
+        enemyHP = int.Parse(enemyHpDisplay.GetComponent<Text>().text);
+        playerTurn = enemyAI.GetComponent<EnemyAI>().enemyTurn;
     }
    
 

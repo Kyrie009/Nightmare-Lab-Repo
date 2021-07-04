@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -15,6 +16,13 @@ public class Navigation : MonoBehaviour
     public GameObject cardScreen;
     public GameObject battleScreen;
     public GameObject victoryScreen;
+    public GameObject defeatScreen;
+    public GameObject shopScreen;
+
+    public GameObject combatUI;
+
+    public GameObject playerMapIcon;
+    public GameObject startPos;
 
     void Awake()
     {
@@ -23,56 +31,53 @@ public class Navigation : MonoBehaviour
         cardScreen.SetActive(false);
         battleScreen.SetActive(false);
         victoryScreen.SetActive(false);
-
-
-
-
-
+        defeatScreen.SetActive(false);
+        shopScreen.SetActive(false);
     }
-
-
 
     //HomeScreen
     public void StartGame()
     {
-
         homeScreen.SetActive(false);
-
     }
-
+    //Back to homescreen
     public void ReturnHome()
     {
-
+        SceneManager.LoadScene(0);
         homeScreen.SetActive(true);
+    }
 
+    //Shop/Recall
+    public void Recall()
+    {
+        shopScreen.SetActive(true);
+        playerMapIcon.transform.position = startPos.transform.position;
+        combatUI.GetComponent<CombatUI>().InitialHP();
+        
+    }
+    public void DoneShopping()
+    {
+        shopScreen.SetActive(false);
     }
 
     //Item Menu
     public void OpenItems()
     {
-
         itemScreen.SetActive(true);
-
     }
     public void CloseItems()
     {
-
         itemScreen.SetActive(false);
-
     }
 
     //Card Menu
     public void OpenCards()
     {
-
         cardScreen.SetActive(true);
-
     }
     public void CloseCards()
     {
-
         cardScreen.SetActive(false);
-
     }
 
     //VictoryScreen
@@ -87,9 +92,18 @@ public class Navigation : MonoBehaviour
         victoryScreen.SetActive(false);
     }
 
+    //DefeatScreen
+    public void Defeat()
+    {
+        defeatScreen.SetActive(true);
+    }
 
+    public void ReturnFromDeath()
+    {
+        SceneManager.LoadScene(0);
+    }
 
-
+    //Exit
     public void QuitGame()
     {
         Application.Quit();
