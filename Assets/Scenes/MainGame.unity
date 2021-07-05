@@ -4065,14 +4065,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 513462698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69561909fbc55dd44993773cc860ec9d, type: 3}
+  m_Script: {fileID: 11500000, guid: a1d333daa3c7a7f4ea1d26a74014e8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigation: {fileID: 1188964458}
-  enemyAI: {fileID: 1638864287}
-  playerHpDisplay: {fileID: 295364749}
-  enemyHpDisplay: {fileID: 1348453120}
-  playerTurn: 0
+  turnOrder: 0
 --- !u!224 &513499377 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8466377094515006139, guid: 70231724cb492534c9ceb3170711a72a,
@@ -6512,19 +6508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa13b4d00e06a14fa384c340550f9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHpDisplay: {fileID: 1348453120}
-  CombatUI: {fileID: 513462698}
-  enemySprite:
-  - {fileID: 21300000, guid: 74280fe920aedf14c8a40966c0ebc263, type: 3}
-  - {fileID: 21300000, guid: db9a383e51db3d140b1abf1aef29fbe7, type: 3}
-  - {fileID: 21300000, guid: ba9b4180e2150b3439f09f7bd1f750ab, type: 3}
-  - {fileID: 21300000, guid: b74d81643a5dee04ba4e16f198312be7, type: 3}
   enemyStats:
   - {fileID: 11400000, guid: 5ddae08221af7e747bc234c10751d85a, type: 2}
   - {fileID: 11400000, guid: b5893ed7e4f75104f99dee365907db9f, type: 2}
   - {fileID: 11400000, guid: a43c9c5c04e22e34cb18b4aec77f86b2, type: 2}
   - {fileID: 11400000, guid: 789b69b9f59c5cb48a1b01a3439809a9, type: 2}
-  enemyID: 0
 --- !u!1 &861081611
 GameObject:
   m_ObjectHideFlags: 0
@@ -8306,7 +8294,6 @@ MonoBehaviour:
   victoryScreen: {fileID: 1665893628}
   defeatScreen: {fileID: 1423086975}
   shopScreen: {fileID: 1985512369}
-  combatUI: {fileID: 513462698}
   playerMapIcon: {fileID: 1872202716}
   startPos: {fileID: 2119579475}
 --- !u!224 &1210063555 stripped
@@ -9872,6 +9859,7 @@ GameObject:
   - component: {fileID: 1565849664}
   - component: {fileID: 1565849666}
   - component: {fileID: 1565849665}
+  - component: {fileID: 1565849667}
   m_Layer: 5
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -9935,6 +9923,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565849663}
   m_CullTransparentMesh: 0
+--- !u!114 &1565849667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565849663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69561909fbc55dd44993773cc860ec9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthDisplay: {fileID: 295364751}
+  health: 100
 --- !u!1 &1590467422
 GameObject:
   m_ObjectHideFlags: 0
@@ -10355,11 +10357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6633c14de644e704aaea4d3e327892cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigation: {fileID: 1188964458}
   enemySpawner: {fileID: 854654588}
-  combatUI: {fileID: 513462698}
-  playerHpDisplay: {fileID: 295364749}
-  enemyTurn: 0
+  healthDisplay: {fileID: 1348453122}
+  health: 0
+  enemyImage: {fileID: 854654590}
 --- !u!1 &1645791452
 GameObject:
   m_ObjectHideFlags: 0

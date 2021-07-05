@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf760df0fcd85e4686b008639c6a092, type: 3}
   m_Name: Crow
   m_EditorClassIdentifier: 
-  initialValue: 30
+  initialHealth: 30
+  baseDmg: 5
+  enemyImage: {fileID: 21300000, guid: db9a383e51db3d140b1abf1aef29fbe7, type: 3}

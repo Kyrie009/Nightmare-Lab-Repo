@@ -9,7 +9,7 @@ using TMPro;
 
 
 
-public class Navigation : MonoBehaviour
+public class Navigation : Singleton<Navigation>
 {
     public GameObject homeScreen;
     public GameObject itemScreen;
@@ -19,12 +19,12 @@ public class Navigation : MonoBehaviour
     public GameObject defeatScreen;
     public GameObject shopScreen;
 
-    public GameObject combatUI;
+   
 
     public GameObject playerMapIcon;
     public GameObject startPos;
 
-    void Awake()
+    void Start()
     {
         //Set draw order from the start
         itemScreen.SetActive(false); 
@@ -52,7 +52,7 @@ public class Navigation : MonoBehaviour
     {
         shopScreen.SetActive(true);
         playerMapIcon.transform.position = startPos.transform.position;
-        combatUI.GetComponent<CombatUI>().InitialHP();
+        _PLAYER.InitialHP();
         
     }
     public void DoneShopping()

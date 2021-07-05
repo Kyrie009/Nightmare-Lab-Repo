@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf760df0fcd85e4686b008639c6a092, type: 3}
   m_Name: Paralysis Demon
   m_EditorClassIdentifier: 
-  initialValue: 50
+  initialHealth: 50
+  baseDmg: 15
+  enemyImage: {fileID: 21300000, guid: 74280fe920aedf14c8a40966c0ebc263, type: 3}

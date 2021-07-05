@@ -3,43 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnEnemies : MonoBehaviour
+public class SpawnEnemies : GameBehaviour
 {
-    public GameObject enemyHpDisplay;
-    public GameObject CombatUI;
-    int enemyHP;
 
-    Image emptySprite;
-    public Sprite[] enemySprite;
     public EnemyStats[] enemyStats;
-    public int enemyID;
-
-
+ 
     // Start is called before the first frame update
     public void SpawnNewEnemy()
     {
         int index;
-        index = Random.Range(0, 4);
-        
-        emptySprite = GetComponent<Image>();
-        emptySprite.sprite = enemySprite[index];
-        
-        enemyHP = enemyStats[index].initialValue;
-        enemyHpDisplay.GetComponent<Text>().text = enemyHP.ToString();
-        enemyID = index;
-
-
-
-
-
-
+        index = Random.Range(0, enemyStats.Length);
+        _ENEMY.SetupEnemy(enemyStats[index]);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-    }
+
 }
