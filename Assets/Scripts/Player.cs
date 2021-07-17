@@ -6,20 +6,20 @@ using TMPro;
 
 public class Player : Singleton<Player>
 {
- //public GameObject cardSlot1;
-    //public GameObject cardSlot2;
-
     public Text healthDisplay;
     public int health;
-   
 
-  
+    public TMP_Text dmgText;
+    public Animator dmgAnim;
+
+    //player animation
+    public Animator playerAnim;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         InitialHP();
-       
 
     }
 
@@ -33,12 +33,18 @@ public class Player : Singleton<Player>
     public void Atk(int _dmg)
     {
         _ENEMY.Hit(_dmg);
+        playerAnim.SetTrigger("PlayerShoot");
+        
     }
 
     public void Hit(int _dmg)
     {
         health -= _dmg;
         healthDisplay.text = health.ToString();
+       
+        dmgText.text = _dmg.ToString();
+        dmgAnim.SetTrigger("HitPlayer");
+        
         if (health <= 0)
         {
             PlayerDied();

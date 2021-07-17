@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : Singleton<Enemy>
 {
-   
     public GameObject enemySpawner;   
     
-    //public GameObject cardSlot1;
-    //public GameObject cardSlot2;
-    
-  
     int index;
 
     public Text healthDisplay;
@@ -19,11 +15,12 @@ public class Enemy : Singleton<Enemy>
     int baseAtk;
     public Image enemyImage;
 
+    public TMP_Text dmgText;
+    public Animator dmgAnim;
 
-    
 
     //Updates the new Enemy 
-   
+
     public void SetupEnemy(EnemyStats _stats)
     {
         health = _stats.initialHealth;
@@ -37,8 +34,10 @@ public class Enemy : Singleton<Enemy>
     //Enemy Attack
     public void Atk()
     {
+        
         _PLAYER.Hit(baseAtk);
-       
+        //_CM.EnemyDmgAnim(baseAtk);
+        
 
     }
 
@@ -46,11 +45,17 @@ public class Enemy : Singleton<Enemy>
     {
         health -= _dmg;
         healthDisplay.text = health.ToString();
+
+        dmgText.text = _dmg.ToString();
+        dmgAnim.SetTrigger("Hit");
+        
         if (IsDead())
         {
             EnemyDied();
         }
     }
+
+    
 
     public void EnemyDied()
     {

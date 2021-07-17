@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CombatManager : Singleton<CombatManager>
 {
+    
+
     public int turnOrder;
-    bool canAtk = true;
+    public bool canAtk = true;
 
     //Player atk list
     public void InitiatePlayerCard()
@@ -21,20 +24,24 @@ public class CombatManager : Singleton<CombatManager>
         canAtk = false;
         yield return new WaitForSeconds(0.5f);
         _PLAYER.Atk(10);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
         if (!_ENEMY.IsDead())
         {
-            _ENEMY.Atk();
+            _ENEMY.Atk();   
         }
-            
-        yield return new WaitForSeconds(0.5f);
         canAtk = true;
         Debug.Log("finish atk seq");
 
+
+
+
     }
 
+   
+  
 
- 
+
+
 
 
 }
