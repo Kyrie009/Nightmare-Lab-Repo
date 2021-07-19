@@ -6,37 +6,49 @@ using TMPro;
 
 public class Enemy : Singleton<Enemy>
 {
-    public GameObject enemySpawner;   
-    
-    int index;
+    public EnemyStats[] enemyStats;
 
     public Text healthDisplay;
     public int health;
-    int baseAtk;
+    //int baseAtk;
     public Image enemyImage;
 
     public TMP_Text dmgText;
     public Animator dmgAnim;
 
 
-    //Updates the new Enemy 
+    //Updates the new Enemy
+    public void SpawnNewEnemy()
+    {
+        int index;
+        index = Random.Range(0, enemyStats.Length);
+        SetupEnemy(enemyStats[index]);
+
+    }
 
     public void SetupEnemy(EnemyStats _stats)
     {
         health = _stats.initialHealth;
-        baseAtk = _stats.baseDmg;
+        //baseAtk = _stats.baseDmg;
         enemyImage.sprite = _stats.enemyImage;
         healthDisplay.text = health.ToString();
+        ChooseCard();
+        
+    }
+
+    public void ChooseCard()
+    {
+        _CL.Claw();
     }
 
 
 
     //Enemy Attack
-    public void Atk()
+    public void Atk(int _dmg)
     {
+        _PLAYER.Hit(_dmg);
+        //_PLAYER.Hit(baseAtk);
         
-        _PLAYER.Hit(baseAtk);
-        //_CM.EnemyDmgAnim(baseAtk);
         
 
     }

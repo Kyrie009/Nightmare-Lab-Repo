@@ -18,8 +18,7 @@ public class Navigation : Singleton<Navigation>
     public GameObject victoryScreen;
     public GameObject defeatScreen;
     public GameObject shopScreen;
-
-   
+    public GameObject combatScreen;
 
     public GameObject playerMapIcon;
     public GameObject startPos;
@@ -33,6 +32,7 @@ public class Navigation : Singleton<Navigation>
         victoryScreen.SetActive(false);
         defeatScreen.SetActive(false);
         shopScreen.SetActive(false);
+        combatScreen.SetActive(false);
     }
 
     //HomeScreen

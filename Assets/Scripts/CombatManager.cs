@@ -5,13 +5,117 @@ using TMPro;
 
 public class CombatManager : Singleton<CombatManager>
 {
-    
-
-    public int turnOrder;
     public bool canAtk = true;
 
-    //Player atk list
-    public void InitiatePlayerCard()
+    //public static CombatManager cmReference;
+
+    public GameObject combatSlot1;
+    public GameObject combatSlot2;
+
+    public GameObject combatScreen;
+
+    public int slotCount;
+    public int actionCount;
+
+    //StartCombat when all cards slots ar filled
+    /*private void Awake()
+    {
+        cmReference = this;
+    }*/
+    private void Start()
+    {
+        slotCount = 0;
+        actionCount = 0;
+    }
+
+    public void SlotCounter()
+    {
+        slotCount += 1;
+
+        if (slotCount == 2)
+        {
+            combatScreen.SetActive(true);
+            CombatStart();
+        }
+    }
+
+    public void ActionCounter()
+    {
+        actionCount += 1;
+
+        if (actionCount == 2)
+        {
+            actionCount = 0;
+            slotCount = 0;
+            if (!_ENEMY.IsDead())
+            {
+                _ENEMY.ChooseCard();
+            }
+            combatScreen.SetActive(false);
+        }
+    }
+
+    //CombatSequence
+    public void CombatStart()
+    {
+        Debug.Log("callcombatsequence");
+        StartCoroutine(CombatSequence());
+    }
+
+    IEnumerator CombatSequence()
+    {
+        Debug.Log("combat sequence start");
+        combatSlot1.GetComponentInChildren<CardEffects>().ActivateCard();
+        yield return new WaitForSeconds(1.2f);
+        //combatSlot1.GetComponentInChildren<CardEffects>().DestroyObject();
+        ActionCounter();
+        combatSlot2.GetComponentInChildren<CardEffects>().ActivateCard();
+        yield return new WaitForSeconds(2.4f);
+        //combatSlot2.GetComponentInChildren<CardEffects>().DestroyObject();
+        ActionCounter();
+        Debug.Log("combat sequence end");
+    }
+
+    //Player combat
+   public void PlayerAtk(int _dmg)
+    {
+        StartCoroutine(AtkRoutine(_dmg));
+    }
+
+    IEnumerator AtkRoutine(int _dmg)
+    {
+        yield return new WaitForSeconds(1f);
+        _PLAYER.Atk(_dmg);
+    }
+
+
+
+
+    //Enemy combat
+    public void EnemyAtk(int _dmg)
+    {
+        StartCoroutine(AtkRoutine2(_dmg));
+    }
+
+    IEnumerator AtkRoutine2(int _dmg)
+    {
+        yield return new WaitForSeconds(1f);
+        _ENEMY.Atk(_dmg);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+        //testatk
+        public void InitiatePlayerCard()
     {
         if (canAtk)
         StartCoroutine(AtkSequence());
@@ -19,29 +123,20 @@ public class CombatManager : Singleton<CombatManager>
     }
 
     IEnumerator AtkSequence()
-    {
-        Debug.Log("Start atk seq");
+    {     
         canAtk = false;
         yield return new WaitForSeconds(0.5f);
         _PLAYER.Atk(10);
         yield return new WaitForSeconds(1.2f);
         if (!_ENEMY.IsDead())
         {
-            _ENEMY.Atk();   
+            //_ENEMY.Atk();   
         }
         canAtk = true;
-        Debug.Log("finish atk seq");
-
-
-
 
     }
 
    
-  
-
-
-
 
 
 }

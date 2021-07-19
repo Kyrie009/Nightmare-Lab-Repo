@@ -10,7 +10,9 @@ public class GameBehaviour:MonoBehaviour
     protected static Enemy         _ENEMY { get { return Enemy.INSTANCE; } }
     protected static CombatManager _CM { get { return CombatManager.INSTANCE; } }
 
-    protected static Navigation     _NAV { get { return Navigation.INSTANCE; } }
+    protected static Navigation    _NAV { get { return Navigation.INSTANCE; } }
+    protected static CardList      _CL { get { return CardList.INSTANCE; } }
+
 }
 
 public class Singleton <T>:GameBehaviour where T:MonoBehaviour

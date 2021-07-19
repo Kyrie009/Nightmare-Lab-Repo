@@ -6,7 +6,7 @@ using TMPro;
 
 public class EventUI : MonoBehaviour
 {
-    public GameObject enemySpawner;
+    public GameObject enemy;
     public GameObject battleScreen;
     public GameObject playerIcon;
 
@@ -33,8 +33,11 @@ public class EventUI : MonoBehaviour
             //Moves to battlescreen
             if (encounter == 2)
             {
-                enemySpawner.GetComponent<SpawnEnemies>().SpawnNewEnemy();
+                
+                enemy.GetComponent<Enemy>().SpawnNewEnemy();
+                
                 battleScreen.SetActive(true);
+            
 
             }
 
