@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf760df0fcd85e4686b008639c6a092, type: 3}
-  m_Name: Paralysis Demon
+  m_Script: {fileID: 11500000, guid: 967300064e62a2c4aa0f1fc22dcadbc2, type: 3}
+  m_Name: Normal Shot
   m_EditorClassIdentifier: 
-  initialHealth: 50
-  baseDmg: 15
-  enemyImage: {fileID: 21300000, guid: 74280fe920aedf14c8a40966c0ebc263, type: 3}
-  moveSet:
-  - {fileID: 11400000, guid: 48f356286e54086469e5979a623eea81, type: 2}
-  - {fileID: 11400000, guid: 771b735621c89f9478aeb14fe3514f44, type: 2}
-  cardDrop: []
+  myType: 1
   cardImage: {fileID: 21300000, guid: 75990de4da59df64d9f3e4178ef75d90, type: 3}
   cardName: NormalShot
   coolDown: 1

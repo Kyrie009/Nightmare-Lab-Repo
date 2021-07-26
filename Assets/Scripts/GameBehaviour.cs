@@ -6,12 +6,17 @@ using UnityEngine;
 public class GameBehaviour:MonoBehaviour
 {
     // Managers
-    protected static Player        _PLAYER { get { return Player.INSTANCE; } }
-    protected static Enemy         _ENEMY { get { return Enemy.INSTANCE; } }
-    protected static CombatManager _CM { get { return CombatManager.INSTANCE; } }
+    protected static Player         _PLAYER { get { return Player.INSTANCE; } }
+    protected static Enemy          _ENEMY { get { return Enemy.INSTANCE; } }
+    protected static CombatManager  _CM { get { return CombatManager.INSTANCE; } }
 
-    protected static Navigation    _NAV { get { return Navigation.INSTANCE; } }
-    protected static CardList      _CL { get { return CardList.INSTANCE; } }
+    protected static Navigation     _NAV { get { return Navigation.INSTANCE; } }
+
+    protected static Event          _EVENT { get { return Event.INSTANCE; } }
+
+    protected static CardDataBase   _CD { get { return CardDataBase.INSTANCE; } }
+
+    protected static PlayerDeck     _PD { get { return PlayerDeck.INSTANCE; } }
 
 }
 

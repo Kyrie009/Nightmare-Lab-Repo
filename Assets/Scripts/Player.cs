@@ -30,6 +30,18 @@ public class Player : Singleton<Player>
 
     }
 
+    //Player Attacks
+    public void PlayerAtk(int _dmg)
+    {
+        StartCoroutine(AtkRoutine(_dmg));
+    }
+
+    IEnumerator AtkRoutine(int _dmg)
+    {
+        yield return new WaitForSeconds(1f);
+        Atk(_dmg);
+    }
+
     public void Atk(int _dmg)
     {
         _ENEMY.Hit(_dmg);
@@ -37,6 +49,8 @@ public class Player : Singleton<Player>
         
     }
 
+
+    //Player is hit
     public void Hit(int _dmg)
     {
         health -= _dmg;

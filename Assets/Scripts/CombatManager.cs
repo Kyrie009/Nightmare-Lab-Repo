@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CombatManager : Singleton<CombatManager>
 {
     public bool canAtk = true;
-
-    //public static CombatManager cmReference;
 
     public GameObject combatSlot1;
     public GameObject combatSlot2;
@@ -18,10 +17,7 @@ public class CombatManager : Singleton<CombatManager>
     public int actionCount;
 
     //StartCombat when all cards slots ar filled
-    /*private void Awake()
-    {
-        cmReference = this;
-    }*/
+  
     private void Start()
     {
         slotCount = 0;
@@ -65,44 +61,19 @@ public class CombatManager : Singleton<CombatManager>
     IEnumerator CombatSequence()
     {
         Debug.Log("combat sequence start");
-        combatSlot1.GetComponentInChildren<CardEffects>().ActivateCard();
+        //combatSlot1.GetComponentInChildren<CardEffects>().ActivateCard();
+        combatSlot1.GetComponent<CardSlot>().ActivateCard();
         yield return new WaitForSeconds(1.2f);
-        //combatSlot1.GetComponentInChildren<CardEffects>().DestroyObject();
+      
         ActionCounter();
-        combatSlot2.GetComponentInChildren<CardEffects>().ActivateCard();
+        //combatSlot2.GetComponentInChildren<CardEffects>().ActivateCard();
+        combatSlot2.GetComponent<CardSlot>().ActivateCard();
         yield return new WaitForSeconds(2.4f);
-        //combatSlot2.GetComponentInChildren<CardEffects>().DestroyObject();
+        
         ActionCounter();
         Debug.Log("combat sequence end");
     }
 
-    //Player combat
-   public void PlayerAtk(int _dmg)
-    {
-        StartCoroutine(AtkRoutine(_dmg));
-    }
-
-    IEnumerator AtkRoutine(int _dmg)
-    {
-        yield return new WaitForSeconds(1f);
-        _PLAYER.Atk(_dmg);
-    }
-
-
-
-
-    //Enemy combat
-    public void EnemyAtk(int _dmg)
-    {
-        StartCoroutine(AtkRoutine2(_dmg));
-    }
-
-    IEnumerator AtkRoutine2(int _dmg)
-    {
-        yield return new WaitForSeconds(1f);
-        _ENEMY.Atk(_dmg);
-
-    }
 
 
 
@@ -113,9 +84,8 @@ public class CombatManager : Singleton<CombatManager>
 
 
 
-
-        //testatk
-        public void InitiatePlayerCard()
+    //testatk
+    public void InitiatePlayerCard()
     {
         if (canAtk)
         StartCoroutine(AtkSequence());
