@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class CardSlot : GameBehaviour
 {
     public GameObject card;
-    public GameObject enemy;
-    public GameObject combatManager;
 
     public bool slotEmpty = true;
     public bool enemyTargeting = false;
@@ -16,14 +14,14 @@ public class CardSlot : GameBehaviour
     public void SetCard()
     {
         this.GetComponent<Image>().sprite = card.GetComponent<Image>().sprite;
-        combatManager.GetComponent<CombatManager>().SlotCounter();
+        _CM.SlotCounter();
          
     }
 
     public void SetEnemyCard()
     {
-        this.GetComponent<Image>().sprite = card.GetComponent<Enemy>().cardImage;
-        combatManager.GetComponent<CombatManager>().SlotCounter();
+        this.GetComponent<Image>().sprite = _ENEMY.cardImage;
+        _CM.SlotCounter();
     }
 
 
@@ -43,7 +41,7 @@ public class CardSlot : GameBehaviour
 
         if (enemyTargeting == true)
         {
-            enemy.GetComponent<Enemy>().CardEffect();
+            _ENEMY.CardEffect();
             enemyTargeting = false;
         }
         

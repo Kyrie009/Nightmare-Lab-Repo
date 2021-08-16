@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99378365, g: 0.4481132, b: 1, a: 1}
+  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -700,18 +700,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatSlot1: {fileID: 0}
-  player: {fileID: 0}
-  card:
-  - {fileID: 11400000, guid: c247720273ab200498e069c5e2bb348c, type: 2}
-  - {fileID: 11400000, guid: 771b735621c89f9478aeb14fe3514f44, type: 2}
-  - {fileID: 11400000, guid: 48f356286e54086469e5979a623eea81, type: 2}
-  - {fileID: 11400000, guid: 7819d71317b983547bcba3afecc16d63, type: 2}
+  card: {fileID: 0}
   nameText: {fileID: 3473433433561151411}
   cdText: {fileID: 185667493691731377}
   dmgText: {fileID: 8230943599817174766}
   infoText: {fileID: 8230943599260748117}
   coolDown: 0
   damage: 0
+  usable: 0
 --- !u!114 &8230943600173147676
 MonoBehaviour:
   m_ObjectHideFlags: 0

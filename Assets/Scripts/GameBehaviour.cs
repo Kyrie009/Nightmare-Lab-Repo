@@ -18,6 +18,8 @@ public class GameBehaviour:MonoBehaviour
 
     protected static PlayerDeck     _PD { get { return PlayerDeck.INSTANCE; } }
 
+    protected static LevelManager     _LM { get { return LevelManager.INSTANCE; } }
+
 }
 
 public class Singleton <T>:GameBehaviour where T:MonoBehaviour

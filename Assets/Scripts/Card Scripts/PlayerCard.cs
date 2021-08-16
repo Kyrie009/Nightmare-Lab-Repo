@@ -8,7 +8,6 @@ using TMPro;
 public class PlayerCard : GameBehaviour
 {
     public GameObject combatSlot1;
-    public Player player;
 
     public Card card;
 
@@ -24,9 +23,12 @@ public class PlayerCard : GameBehaviour
 
     void Start()
      {
-         
-         //SetupCard(card);
-     }
+         if (card != null)
+        {
+            SetupCard(card);
+        }
+
+    }
 
     public void NewCard()
     {

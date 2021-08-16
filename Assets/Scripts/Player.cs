@@ -38,6 +38,7 @@ public class Player : Singleton<Player>
 
     IEnumerator AtkRoutine(int _dmg)
     {
+        playerAnim.SetTrigger("PlayerShoot");
         yield return new WaitForSeconds(1f);
         Atk(_dmg);
     }
@@ -45,8 +46,6 @@ public class Player : Singleton<Player>
     public void Atk(int _dmg)
     {
         _ENEMY.Hit(_dmg);
-        playerAnim.SetTrigger("PlayerShoot");
-        
     }
 
 
