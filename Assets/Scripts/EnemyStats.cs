@@ -7,10 +7,11 @@ using UnityEngine.UI;
 [CreateAssetMenu]
 public class EnemyStats : ScriptableObject
 {
+    //EnemyStats
     public int initialHealth;
-    public int baseDmg;
+    public string EnemyName;
     public Sprite enemyImage;
-
+    //Enemy Cards
     public Card[] moveSet;
     public Card[] cardDrop;
     public Sprite cardImage;
@@ -32,7 +33,6 @@ public class EnemyStats : ScriptableObject
         cardImage = _stats.cardImage;
         cardName = _stats.cardName;
         cardDescription = _stats.cardDescription;
-
         coolDown = _stats.coolDown;
         damage = _stats.damage;
     }

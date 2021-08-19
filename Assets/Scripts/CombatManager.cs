@@ -16,14 +16,13 @@ public class CombatManager : Singleton<CombatManager>
     public int slotCount;
     public int actionCount;
 
-    //StartCombat when all cards slots ar filled
-  
+    
     private void Start()
     {
         slotCount = 0;
         actionCount = 0;
     }
-
+    //StartCombat when all cards slots ar filled
     public void SlotCounter()
     {
         slotCount += 1;
@@ -54,59 +53,17 @@ public class CombatManager : Singleton<CombatManager>
     //CombatSequence
     public void CombatStart()
     {
-        Debug.Log("callcombatsequence");
         StartCoroutine(CombatSequence());
     }
 
     IEnumerator CombatSequence()
     {
-        Debug.Log("combat sequence start");
-        //combatSlot1.GetComponentInChildren<CardEffects>().ActivateCard();
         combatSlot1.GetComponent<CardSlot>().ActivateCard();
-        yield return new WaitForSeconds(1.2f);
-      
+        yield return new WaitForSeconds(1.2f);       
         ActionCounter();
-        //combatSlot2.GetComponentInChildren<CardEffects>().ActivateCard();
         combatSlot2.GetComponent<CardSlot>().ActivateCard();
         yield return new WaitForSeconds(2.4f);
-        
+        combatSlot1.GetComponent<CardSlot>().ClearSlot();
         ActionCounter();
-        Debug.Log("combat sequence end");
     }
-
-
-
-
-
-
-
-
-
-
-
-    //testatk
-    public void InitiatePlayerCard()
-    {
-        if (canAtk)
-        StartCoroutine(AtkSequence());
-
-    }
-
-    IEnumerator AtkSequence()
-    {     
-        canAtk = false;
-        yield return new WaitForSeconds(0.5f);
-        _PLAYER.Atk(10);
-        yield return new WaitForSeconds(1.2f);
-        if (!_ENEMY.IsDead())
-        {
-            //_ENEMY.Atk();   
-        }
-        canAtk = true;
-
-    }
-
-   
-
-
 }

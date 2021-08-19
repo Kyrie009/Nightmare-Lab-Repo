@@ -6,16 +6,17 @@ using TMPro;
 
 public class Enemy : Singleton<Enemy>
 {
+    //List of Enemies
     public EnemyStats[] enemyStats;
-    
+    //UI related
     public GameObject combatSlot2;
-
-    
+    public Image enemyImage;
+    public TMP_Text enemyName;
+    //Health
+    public Slider healthSlider;
     public Text healthDisplay;
     public int health;
-    //int baseAtk;
-    public Image enemyImage;
-
+    //Animation
     public TMP_Text dmgText;
     public Animator dmgAnim;
     //current card
@@ -38,12 +39,12 @@ public class Enemy : Singleton<Enemy>
     public void SetupEnemy(EnemyStats _stats)
     {
         health = _stats.initialHealth;
-        //baseAtk = _stats.baseDmg;
-        enemyImage.sprite = _stats.enemyImage;
+        healthSlider.maxValue = health;
+        healthSlider.value = health;
         healthDisplay.text = health.ToString();
-        
-        ChooseCard();
-        
+        enemyImage.sprite = _stats.enemyImage;  
+        enemyName.text = _stats.EnemyName;
+        ChooseCard();       
     }
 
     public void ChooseCard()
@@ -54,10 +55,7 @@ public class Enemy : Singleton<Enemy>
         cardDescription = enemyStats[index].cardDescription;
         coolDown = enemyStats[index].coolDown;
         damage = enemyStats[index].damage;
-
         PlaceCard();
-        
-
     }
 
     public void PlaceCard()
@@ -90,8 +88,6 @@ public class Enemy : Singleton<Enemy>
         if (!IsDead())
         { 
             _PLAYER.Hit(_dmg);
-            //_PLAYER.Hit(baseAtk);
-
         }
     }
 
@@ -99,6 +95,7 @@ public class Enemy : Singleton<Enemy>
     {
         health -= _dmg;
         healthDisplay.text = health.ToString();
+        healthSlider.value = health;
 
         dmgText.text = _dmg.ToString();
         dmgAnim.SetTrigger("Hit");
@@ -108,8 +105,6 @@ public class Enemy : Singleton<Enemy>
             EnemyDied();
         }
     }
-
-    
 
     public void EnemyDied()
     {

@@ -8,6 +8,7 @@ using TMPro;
 public class PlayerCard : GameBehaviour
 {
     public GameObject combatSlot1;
+    public GameObject cardInfoHolder;
 
     public Card card;
 
@@ -23,20 +24,23 @@ public class PlayerCard : GameBehaviour
 
     void Start()
      {
+        //Setup cards you have at the beginning
          if (card != null)
         {
-            SetupCard(card);
+            SetupCard(card);       
         }
 
-    }
+         if (card == null)
+        {
+            this.gameObject.SetActive(false);
+        }
 
-    public void NewCard()
-    {
-
+        cardInfoHolder.SetActive(false);
     }
 
     public void SetupCard(Card _stats)
     {
+        this.gameObject.SetActive(true);
         card = _stats;
         this.GetComponent<Image>().sprite = _stats.cardImage;
         nameText.text = _stats.cardName;
@@ -46,7 +50,6 @@ public class PlayerCard : GameBehaviour
 
         coolDown = _stats.coolDown;
         damage = _stats.damage;
-
     }
 
     public void Click()
@@ -55,6 +58,17 @@ public class PlayerCard : GameBehaviour
         combatSlot1.GetComponent<CardSlot>().card = this.gameObject;
         combatSlot1.GetComponent<CardSlot>().SetCard();
 
+    }
+
+    public void PointerEnter()
+    {
+        SetupCard(card);
+        cardInfoHolder.SetActive(true);
+    }
+
+    public void PointerExit()
+    {
+        cardInfoHolder.SetActive(false);
     }
 
     public void CardEffect()

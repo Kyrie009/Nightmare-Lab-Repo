@@ -6,6 +6,7 @@ using TMPro;
 
 public class Player : Singleton<Player>
 {
+    public Slider healthSlider;
     public Text healthDisplay;
     public int health;
 
@@ -15,19 +16,17 @@ public class Player : Singleton<Player>
     //player animation
     public Animator playerAnim;
     
-
     // Start is called before the first frame update
     void Start()
     {
         InitialHP();
-
     }
 
     public void InitialHP()
     {
         health = 100;
-        healthDisplay.text = health.ToString();
-
+        healthSlider.maxValue = 100;
+        UpdateHealth();
     }
 
     //Player Attacks
@@ -48,13 +47,12 @@ public class Player : Singleton<Player>
         _ENEMY.Hit(_dmg);
     }
 
-
     //Player is hit
     public void Hit(int _dmg)
     {
         health -= _dmg;
-        healthDisplay.text = health.ToString();
-       
+        UpdateHealth();
+
         dmgText.text = _dmg.ToString();
         dmgAnim.SetTrigger("HitPlayer");
         
@@ -64,11 +62,16 @@ public class Player : Singleton<Player>
         }
     }
 
-
     public void PlayerDied()
     {
         healthDisplay.text = 0.ToString();
         _NAV.Defeat();
+    }
+
+    public void UpdateHealth()
+    {
+        healthSlider.value = health;
+        healthDisplay.text = health.ToString();
     }
 
 

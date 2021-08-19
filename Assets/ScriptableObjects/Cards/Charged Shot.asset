@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 1
   cardImage: {fileID: 21300000, guid: 7d159afdee9df38449c1f39c54e7192a, type: 3}
-  cardName: Charged shot
+  cardName: Charged Shot
   coolDown: 2
   damage: 20
   cardDescription: Higher cooldown for a stronger shot.
