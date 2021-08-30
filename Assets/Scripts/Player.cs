@@ -38,7 +38,7 @@ public class Player : Singleton<Player>
     IEnumerator AtkRoutine(int _dmg)
     {
         playerAnim.SetTrigger("PlayerShoot");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Atk(_dmg);
     }
 
@@ -55,6 +55,7 @@ public class Player : Singleton<Player>
 
         dmgText.text = _dmg.ToString();
         dmgAnim.SetTrigger("HitPlayer");
+        playerAnim.SetTrigger("PlayerRecoil");
         
         if (health <= 0)
         {

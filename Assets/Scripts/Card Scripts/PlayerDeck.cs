@@ -35,7 +35,7 @@ public class PlayerDeck : Singleton<PlayerDeck>
             AddCard(starterCard2);
         }
     }
-    //Adds and sorts new cards
+    //Adds and sorts newly obtained cards
     public void AddCard(Card card)
     {
         cardList.Add(card);

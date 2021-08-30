@@ -10,22 +10,17 @@ public class CardSlot : GameBehaviour
     public bool slotEmpty = true;
     public bool enemyTargeting = false;
 
-    private void Awake()
-    {
-        this.gameObject.SetActive(false);
-    }
     public void SetCard()
-    {
-        this.gameObject.SetActive(true);
+    {      
         this.GetComponent<Image>().sprite = card.GetComponent<Image>().sprite;
-        _CM.SlotCounter();
-         
+        _CM.RestoreAlpha1();
+        _CM.SlotCounter();        
     }
 
     public void SetEnemyCard()
-    {
-        this.gameObject.SetActive(true);
+    {    
         this.GetComponent<Image>().sprite = _ENEMY.cardImage;
+        _CM.RestoreAlpha2();
         _CM.SlotCounter();
     }
 
@@ -40,7 +35,6 @@ public class CardSlot : GameBehaviour
         if (enemyTargeting == false)
         {
             card.GetComponent<PlayerCard>().CardEffect();
-
         }
 
         if (enemyTargeting == true)
@@ -50,10 +44,4 @@ public class CardSlot : GameBehaviour
         }       
     }
 
-    public void ClearSlot()
-    {
-        this.gameObject.SetActive(false);      
-    }
-
- 
 }

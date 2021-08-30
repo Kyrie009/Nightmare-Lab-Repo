@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf760df0fcd85e4686b008639c6a092, type: 3}
   m_Name: Cat Demon
   m_EditorClassIdentifier: 
-  initialHealth: 40
+  initialHealth: 75
   EnemyName: Cat Demon
-  enemyImage: {fileID: 21300000, guid: b74d81643a5dee04ba4e16f198312be7, type: 3}
+  enemyImage: {fileID: 21300000, guid: d50c1d9e9a5ffa141aa374443ff4b1a3, type: 3}
   moveSet:
-  - {fileID: 11400000, guid: 771b735621c89f9478aeb14fe3514f44, type: 2}
+  - {fileID: 11400000, guid: c247720273ab200498e069c5e2bb348c, type: 2}
   - {fileID: 11400000, guid: 771b735621c89f9478aeb14fe3514f44, type: 2}
   cardDrop: []
   cardImage: {fileID: 21300000, guid: ea42bb0628838134ea71addfde86dc24, type: 3}

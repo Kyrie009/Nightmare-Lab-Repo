@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 50
   EnemyName: Dream Eater
-  enemyImage: {fileID: 21300000, guid: 74280fe920aedf14c8a40966c0ebc263, type: 3}
+  enemyImage: {fileID: 21300000, guid: d237b5ff472fa3643b17438fb2f3cd6f, type: 3}
   moveSet:
   - {fileID: 11400000, guid: 48f356286e54086469e5979a623eea81, type: 2}
   - {fileID: 11400000, guid: 771b735621c89f9478aeb14fe3514f44, type: 2}

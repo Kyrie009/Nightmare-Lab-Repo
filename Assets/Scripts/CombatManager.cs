@@ -10,6 +10,8 @@ public class CombatManager : Singleton<CombatManager>
 
     public GameObject combatSlot1;
     public GameObject combatSlot2;
+    public Animator animSlot1;
+    public Animator animSlot2;
 
     public GameObject combatScreen;
 
@@ -33,7 +35,7 @@ public class CombatManager : Singleton<CombatManager>
             CombatStart();
         }
     }
-
+    //Start new turn when all actions are resolved.
     public void ActionCounter()
     {
         actionCount += 1;
@@ -58,12 +60,30 @@ public class CombatManager : Singleton<CombatManager>
 
     IEnumerator CombatSequence()
     {
+        yield return new WaitForSeconds(0.5f);
+        animSlot1.SetTrigger("EnableSlot1");
+        yield return new WaitForSeconds(0.5f);
         combatSlot1.GetComponent<CardSlot>().ActivateCard();
         yield return new WaitForSeconds(1.2f);       
         ActionCounter();
-        combatSlot2.GetComponent<CardSlot>().ActivateCard();
-        yield return new WaitForSeconds(2.4f);
-        combatSlot1.GetComponent<CardSlot>().ClearSlot();
+        if (!_ENEMY.IsDead())
+        {
+            animSlot2.SetTrigger("EnableSlot2");
+            yield return new WaitForSeconds(0.5f);
+            combatSlot2.GetComponent<CardSlot>().ActivateCard();
+            yield return new WaitForSeconds(2f); 
+        }              
         ActionCounter();
     }
+
+    public void RestoreAlpha1()
+    {
+        animSlot1.SetTrigger("RestoreAlpha");
+    }
+
+    public void RestoreAlpha2()
+    {
+        animSlot2.SetTrigger("RestoreAlpha2");
+    }
+
 }

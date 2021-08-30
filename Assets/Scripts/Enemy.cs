@@ -12,6 +12,7 @@ public class Enemy : Singleton<Enemy>
     public GameObject combatSlot2;
     public Image enemyImage;
     public TMP_Text enemyName;
+    public TMP_Text cardRewardText;
     //Health
     public Slider healthSlider;
     public Text healthDisplay;
@@ -19,6 +20,7 @@ public class Enemy : Singleton<Enemy>
     //Animation
     public TMP_Text dmgText;
     public Animator dmgAnim;
+    public Animator enemyAnim;
     //current card
     public Sprite cardImage;
     public string cardName;
@@ -77,18 +79,18 @@ public class Enemy : Singleton<Enemy>
 
     IEnumerator AtkRoutine2(int _dmg)
     {
-        yield return new WaitForSeconds(1f);
-        _ENEMY.Atk(_dmg);
-
+        if (!IsDead())
+        {   
+            enemyAnim.SetTrigger("EnemyAtk");
+            yield return new WaitForSeconds(0.5f);
+            Atk(_dmg);
+        }      
     }
 
     //Enemy Attack
     public void Atk(int _dmg)
-    {
-        if (!IsDead())
-        { 
+    {           
             _PLAYER.Hit(_dmg);
-        }
     }
 
     public void Hit(int _dmg)
@@ -99,6 +101,7 @@ public class Enemy : Singleton<Enemy>
 
         dmgText.text = _dmg.ToString();
         dmgAnim.SetTrigger("Hit");
+        enemyAnim.SetTrigger("EnemyRecoil");
         
         if (IsDead())
         {
@@ -109,7 +112,9 @@ public class Enemy : Singleton<Enemy>
     public void EnemyDied()
     {
         healthDisplay.text = 0.ToString();
-        _PD.AddCard(enemyStats[index].moveSet[Random.Range(0,enemyStats[index].moveSet.Length)]);
+        Card cardDrop = enemyStats[index].moveSet[Random.Range(0, enemyStats[index].moveSet.Length)];
+        _PD.AddCard(cardDrop);
+        cardRewardText.text = cardDrop.cardName + " +1";
         _NAV.Victory();
     }
 

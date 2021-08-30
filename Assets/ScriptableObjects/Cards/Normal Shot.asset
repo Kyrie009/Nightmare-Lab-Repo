@@ -17,4 +17,4 @@ MonoBehaviour:
   cardName: Normal Shot
   coolDown: 1
   damage: 10
-  cardDescription: Shoot
+  cardDescription: Basic Shot

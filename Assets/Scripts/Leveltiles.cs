@@ -56,7 +56,7 @@ public class Leveltiles : GameBehaviour
             {
                 
                 _ENEMY.SpawnNewEnemy();
-                
+                _BM.CombatBackground();
                 battleScreen.SetActive(true);
             
 

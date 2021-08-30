@@ -90,6 +90,7 @@ public class Navigation : Singleton<Navigation>
     {
         battleScreen.SetActive(false);
         victoryScreen.SetActive(false);
+        _BM.DefaultBackground();
     }
 
     //DefeatScreen

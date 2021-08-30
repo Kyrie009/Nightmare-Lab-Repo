@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 60
   EnemyName: Starved One
-  enemyImage: {fileID: 21300000, guid: ba9b4180e2150b3439f09f7bd1f750ab, type: 3}
+  enemyImage: {fileID: 21300000, guid: f16cf34dde3dcea418b951316c7bba16, type: 3}
   moveSet:
   - {fileID: 11400000, guid: 48f356286e54086469e5979a623eea81, type: 2}
   - {fileID: 11400000, guid: 7819d71317b983547bcba3afecc16d63, type: 2}

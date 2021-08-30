@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 30
   EnemyName: Crow
-  enemyImage: {fileID: 21300000, guid: db9a383e51db3d140b1abf1aef29fbe7, type: 3}
+  enemyImage: {fileID: 21300000, guid: d78e51f902546334392e20775c814b61, type: 3}
   moveSet:
   - {fileID: 11400000, guid: 771b735621c89f9478aeb14fe3514f44, type: 2}
   - {fileID: 11400000, guid: c247720273ab200498e069c5e2bb348c, type: 2}
   cardDrop: []
-  cardImage: {fileID: 21300000, guid: ea42bb0628838134ea71addfde86dc24, type: 3}
-  cardName: Impale
-  coolDown: 2
-  damage: 15
-  cardDescription: Piercing Hit
+  cardImage: {fileID: 21300000, guid: 49489b13b4f72b745aeadb40d1431b32, type: 3}
+  cardName: Slash
+  coolDown: 0
+  damage: 5
+  cardDescription: Attack
